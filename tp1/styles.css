@@ -1,0 +1,70 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  margin: 20px;
+  font-size: 14px;
+}
+.form-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+fieldset {
+  border: 1px solid #ccc;
+  padding: 20px;
+}
+legend {
+  font-weight: bold;
+  text-align: center;
+}
+.form-group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 15px;
+}
+.form-group label {
+  width: 300px;
+  text-align: left;
+  margin-bottom: 5px;
+}
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 5px;
+  width: calc(100% - 310px);
+  margin-left: 10px;
+  box-sizing: border-box;
+}
+
+.form-group input[type="radio"],
+.form-group input[type="checkbox"] {
+  width: auto;
+  margin-left: 0;
+}
+.form-group .radio-group,
+.form-group .checkbox-group {
+  display: inline-block;
+  margin-left: 10px;
+}
+.form-group select {
+  width: 80px;
+}
+.file-input {
+  width: auto;
+}
+.form-actions {
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px;
+}
+/* .form-actions button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+}
+.form-actions button.cancel {
+  background-color: #dc3545;
+} */

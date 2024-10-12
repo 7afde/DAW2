@@ -4,12 +4,104 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="styles.css">
   <title>Document</title>
 </head>
 
 <body>
+  <div class="form-container">
+    <fieldset>
+      <legend>Formulaire d'inscription réservé aux étudiants de la faculté NTIC Université Constantine2 - 3ème année
+        licence :</legend>
+      <form>
+        <!-- Nom -->
+        <div class="form-group">
+          <label for="nom">Nom</label>
+          <input type="text" id="nom" name="nom" placeholder="saisir votre nom" required>
+        </div>
 
+        <!-- Prenom -->
+        <div class="form-group">
+          <label for="prenom">Prenom</label>
+          <input type="text" id="prenom" name="prenom" placeholder="saisir votre prénom" required>
+        </div>
+
+        <!-- Email -->
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="saisir votre Email" required>
+        </div>
+
+        <!-- Sexe -->
+        <div class="form-group">
+          <label>Sexe</label>
+          <div class="radio-group">
+            <label for="masculin">Masculin</label>
+            <input type="radio" id="masculin" name="sexe" value="masculin" required>
+
+            <label for="feminin">Féminin</label>
+            <input type="radio" id="feminin" name="sexe" value="feminin" required>
+          </div>
+        </div>
+
+        <!-- Photo -->
+        <div class="form-group">
+          <label for="photo">Photo</label>
+          <input type="file" id="photo" name="photo" class="file-input">
+        </div>
+
+        <!-- Spécialité -->
+        <div class="form-group">
+          <label for="specialite">Spécialité</label>
+          <select id="specialite" name="specialite">
+            <option value="TI">TI</option>
+            <option value="GL">GL</option>
+            <option value="SCI">SCI</option>
+            <option value="SI">SI</option>
+          </select>
+        </div>
+
+        <!-- Langages de programmation maîtrisés -->
+        <div class="form-group">
+          <label>Langages de programmation maîtrisés</label>
+          <select multiple size="4" name="languages[]">
+            <option value="java">Java</option>
+            <option value="c">C</option>
+            <option value="cpp">C++</option>
+            <option value="php">PHP</option>
+            <option value="python">Python</option>
+            <option value="javascript">JavaScript</option>
+            <option value="html">HTML</option>
+          </select>
+          <p style="font-size: 12px; margin-top: auto;padding: 0 10px;">(Pour faire plusieurs choix maintenir la
+            touche
+            CTRL enfoncée)
+          </p>
+        </div>
+
+        <!-- Systèmes d'exploitation utilisés -->
+        <div class="form-group">
+          <label>Systèmes d'exploitation utilisés</label>
+          <div class="checkbox-group">
+            <input type="checkbox" id="windows" name="os" value="windows">
+            <label for="windows">Windows</label>
+
+            <input type="checkbox" id="linux" name="os" value="linux">
+            <label for="linux">Linux</label>
+
+            <input type="checkbox" id="macos" name="os" value="macos">
+            <label for="macos">MacOS</label>
+          </div>
+        </div>
+
+        <!-- Submit and Cancel -->
+        <div class="form-actions">
+          <button type="submit">Envoyer</button>
+          <button type="button" class="cancel">Annuler</button>
+        </div>
+      </form>
+    </fieldset>
+  </div>
 </body>
 
 </html>
