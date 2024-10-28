@@ -13,26 +13,23 @@
     <fieldset>
       <legend>Formulaire d'inscription réservé aux étudiants de la faculté NTIC Université Constantine2 - 3ème année
         licence :</legend>
-      <form>
-        <!-- Nom -->
+      <form action="test.php" method="post" enctype="multipart/form-data">
+
         <div class="form-group">
           <label for="nom">Nom</label>
           <input type="text" id="nom" name="nom" placeholder="saisir votre nom" required>
         </div>
 
-        <!-- Prenom -->
         <div class="form-group">
           <label for="prenom">Prenom</label>
           <input type="text" id="prenom" name="prenom" placeholder="saisir votre prénom" required>
         </div>
 
-        <!-- Email -->
         <div class="form-group">
           <label for="email">Email</label>
           <input type="email" id="email" name="email" placeholder="saisir votre Email" required>
         </div>
 
-        <!-- Sexe -->
         <div class="form-group">
           <label>Sexe</label>
           <div class="radio-group">
@@ -44,13 +41,11 @@
           </div>
         </div>
 
-        <!-- Photo -->
         <div class="form-group">
           <label for="photo">Photo</label>
           <input type="file" id="photo" name="photo" class="file-input">
         </div>
 
-        <!-- Spécialité -->
         <div class="form-group">
           <label for="specialite">Spécialité</label>
           <select id="specialite" name="specialite">
@@ -61,7 +56,6 @@
           </select>
         </div>
 
-        <!-- Langages de programmation maîtrisés -->
         <div class="form-group">
           <label>Langages de programmation maîtrisés</label>
           <select multiple size="4" name="languages[]">
@@ -79,7 +73,6 @@
           </p>
         </div>
 
-        <!-- Systèmes d'exploitation utilisés -->
         <div class="form-group">
           <label>Systèmes d'exploitation utilisés</label>
           <div class="checkbox-group">
@@ -94,7 +87,6 @@
           </div>
         </div>
 
-        <!-- Submit and Cancel -->
         <div class="form-actions">
           <button type="submit">Envoyer</button>
           <button type="button" class="cancel">Annuler</button>
