@@ -1,19 +1,19 @@
 <?php
-$pays = ["Algérie", "France", "États-Unis", "Espagne", "Italie", "Allemagne", "Japon", "Chine", "Inde", "Brésil"];
+// Retrieve favorites from the cookie or set to an empty array
 $favorites = isset($_COOKIE['favorites']) ? explode(',', $_COOKIE['favorites']) : [];
 
+// List of available countries
+$countries = ["Algérie", "France", "États-Unis", "Espagne", "Italie", "Allemagne", "Japon", "Chine", "Inde", "Brésil"];
 
-if (isset($_POST['add_favorite'])) {
-  $favorite = $_POST['country'];
-  $favorites = isset($_COOKIE['favorites']) ? explode(',', $_COOKIE['favorites']) : [];
-  if (!in_array($favorite, $favorites)) {
-    $favorites[] = $favorite;
-    setcookie('favorites', implode(',', $favorites), time() + 3600);
-  }
+// Add a country to favorites if passed in the URL and not already a favorite
+if (isset($_GET['add']) && in_array($_GET['add'], $countries) && !in_array($_GET['add'], $favorites)) {
+  $favorites[] = $_GET['add'];
+  setcookie('favorites', implode(',', $favorites), time() + 3600, "/");
 }
 
-if (isset($_POST['clear_favorites'])) {
-  setcookie('favorites', '', time() - 3600);
+// Clear all favorites if the 'clear' parameter is set in the URL
+if (isset($_GET['clear'])) {
+  setcookie('favorites', '', time() - 3600, "/");
   $favorites = [];
 }
 ?>
@@ -23,48 +23,32 @@ if (isset($_POST['clear_favorites'])) {
 
 <head>
   <meta charset="UTF-8">
-  <title>Liste des pays</title>
-  <style>
-    .country {
-      border: 1px solid #000;
-      background-color: #f9f9f9;
-      margin: 10px;
-      padding: 10px;
-    }
-
-    .favorites {
-      margin-top: 20px;
-    }
-  </style>
+  <title>Pays Favoris</title>
 </head>
 
 <body>
   <h1>Liste des pays</h1>
-  <?php foreach ($pays as $pays): ?>
-    <div class="country">
-      <span><?php echo $pays; ?></span>
-      <form method="post" style="display:inline;">
-        <input type="hidden" name="country" value="<?php echo $pays; ?>">
-        <button type="submit" name="add_favorite">Ajouter aux favoris</button>
-      </form>
-    </div>
-  <?php endforeach; ?>
+  <ul>
+    <?php foreach ($countries as $country): ?>
+      <li>
+        <?php echo htmlspecialchars($country); ?> -
+        <a href="?add=<?php echo urlencode($country); ?>">Ajouter aux favoris</a>
+      </li>
+    <?php endforeach; ?>
+  </ul>
 
-  <div class="favorites">
-    <h2>Mes pays favoris</h2>
-    <?php if (empty($favorites)): ?>
-      <p>Aucun pays favori</p>
-    <?php else: ?>
-      <ul>
-        <?php foreach ($favorites as $favorite): ?>
-          <li><?php echo $favorite; ?></li>
-        <?php endforeach; ?>
-      </ul>
-    <?php endif; ?>
-    <form method="post">
-      <button type="submit" name="clear_favorites">Effacer mes favoris</button>
-    </form>
-  </div>
+  <h2>Mes pays favoris</h2>
+  <?php if (empty($favorites)): ?>
+    <p>Aucun pays favori</p>
+  <?php else: ?>
+    <ul>
+      <?php foreach ($favorites as $favorite): ?>
+        <li><?php echo htmlspecialchars($favorite); ?></li>
+      <?php endforeach; ?>
+    </ul>
+  <?php endif; ?>
+
+  <a href="?clear=1">Effacer mes favoris</a>
 </body>
 
 </html>
